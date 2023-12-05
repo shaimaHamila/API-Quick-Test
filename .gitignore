@@ -1,0 +1,10 @@
+# Node.js dependencies
+node_modules/
+
+# Compiled files
+dist/
+build/
+
+# Code editors
+.vscode/
+.idea/

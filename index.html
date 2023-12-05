@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" type="module"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <title>Document</title>
+  </head>
+  <body class="">
+    <nav class="navbar navbar-light" style="background-color: black">
+      <span class="navbar-brand mx-4 mb-0 h1 text-danger">API Quick Test</span>
+    </nav>
+    <div class="p-4">
+      <form class="mb-4" data-form>
+        <div class="input-group mb-4">
+          <select class="form-select flex-grow-0 w-auto" data-method>
+            <option value="get" selected>GET</option>
+            <option value="post">POST</option>
+            <option value="put">PUT</option>
+            <option value="patch">PATCH</option>
+            <option value="delete">DELETE</option>
+          </select>
+          <input
+            data-url
+            required
+            class="form-control"
+            placeholder="Enter URL : http://"
+            type="url" />
+          <button type="submit" class="btn btn-danger">send</button>
+        </div>
+
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="query-params-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#query-params"
+              type="button"
+              role="tab"
+              aria-controls="query-params"
+              aria-selected="true">
+              Query Params
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="request-headers-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#request-headers"
+              type="button"
+              role="tab"
+              aria-controls="request-headers"
+              aria-selected="false">
+              Headers
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="json-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#json"
+              type="button"
+              role="tab"
+              aria-controls="json"
+              aria-selected="false">
+              JSON
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content p-3 border-top-0 border">
+          <div
+            class="tab-pane fade show active"
+            id="query-params"
+            role="tabpanel"
+            aria-labelledby="query-params-tab">
+            <!-- data-query-params -->
+            <div data-query-params></div>
+            <button
+              data-add-query-param-btn
+              class="mt-2 btn btn-outline-danger"
+              type="button">
+              Add
+            </button>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="request-headers"
+            role="tabpanel"
+            aria-labelledby="request-headers-tab">
+            <!-- data-request-headers -->
+            <div data-request-headers></div>
+            <button
+              data-add-request-header-btn
+              class="mt-2 btn btn-outline-success"
+              type="button">
+              Add
+            </button>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="json"
+            role="tabpanel"
+            aria-labelledby="json-tab">
+            <!-- data-request-json -->
+            <div
+              data-json-request-body
+              class="overflow-auto"
+              style="max-height: 200px"></div>
+          </div>
+        </div>
+      </form>
+
+      <div class="mt-5 d-none" data-response-section>
+        <h3>Response</h3>
+        <div class="d-flex my-2">
+          <div class="me-3">Status: <span data-status></span></div>
+          <div class="me-3">Time: <span data-time></span>ms</div>
+          <div class="me-3">Size: <span data-size></span></div>
+        </div>
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="body-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#body"
+              type="button"
+              role="tab"
+              aria-controls="body"
+              aria-selected="true">
+              Body
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="response-headers-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#response-headers"
+              type="button"
+              role="tab"
+              aria-controls="response-headers"
+              aria-selected="false">
+              Headers
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content p-3 border-top-0 border">
+          <div
+            class="tab-pane fade show active"
+            id="body"
+            role="tabpanel"
+            aria-labelledby="body-tab">
+            <!-- Start body  -->
+            <div
+              data-json-response-body
+              class="overflow-auto"
+              style="max-height: 200px"></div>
+            <!-- End body  -->
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="response-headers"
+            role="tabpanel"
+            aria-labelledby="response-headers-tab">
+            <!-- Start header  -->
+            <div
+              style="
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.5rem 2rem;
+              "
+              data-response-headers></div>
+            <!-- End header  -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Start : the Key Value tempale -->
+    <template data-key-value-template>
+      <div class="input-group my-2" data-key-value-pair>
+        <input type="text" data-key class="form-control" placeholder="Key" />
+        <input
+          type="text"
+          data-value
+          class="form-control"
+          placeholder="Value" />
+        <button type="button" data-remove-btn class="btn btn-outline-danger">
+          Remove
+        </button>
+      </div>
+    </template>
+    <!-- Start : the Key Value tempale -->
+  </body>
+</html>
