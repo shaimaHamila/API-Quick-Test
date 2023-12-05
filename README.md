@@ -30,7 +30,7 @@ API Quick Test is a user-friendly tool designed for efficient API testing. It al
 6. View real-time response details and headers.
 
 ## Setting Up the Project
-
+#Free fake API for testing and prototyping: https://jsonplaceholder.typicode.com/
 1. **Clone the Repository:**
    ```bash
    git clone [repository-url]
